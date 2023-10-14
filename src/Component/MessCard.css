@@ -1,0 +1,61 @@
+#Card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#list{
+    width: 18vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0.3vw;
+    border: solid rgb(209, 209, 209) 1px;
+    align-items: center;
+}
+
+.list_name{
+    text-transform: uppercase;
+    font-family: Inter;
+    font-size: 3vh;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-decoration: none;
+    color: #000;
+    margin-top: 4px;
+}
+.list_item{
+    font-family: Inter;
+    font-size: 2vh;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #505050;
+    margin-top: 4px;
+
+}
+
+#sub-header{
+    display: flex;
+    /* width: 100vw; */
+    align-items: center;
+    justify-content: space-between;
+    margin: 2vw;
+}
+.sub_name{
+    color: #000;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+}
+
+#two-view{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}

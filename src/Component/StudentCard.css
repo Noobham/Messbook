@@ -1,0 +1,12 @@
+.StudentCard{
+    width: 18vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0.3vw;
+    border: solid rgb(209, 209, 209) 1px;
+    align-items: center;
+    border-radius: 5px;
+    /* height: 50vh; */
+}

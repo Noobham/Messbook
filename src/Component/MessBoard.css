@@ -1,0 +1,13 @@
+.Card{
+    height: 250px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    text-transform: capitalize;
+    align-items: center;
+}
+.Card_img{
+    height: 150px;
+    object-fit:fill;
+}
