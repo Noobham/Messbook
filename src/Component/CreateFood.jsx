@@ -1,21 +1,30 @@
 import { Card, TextField, Typography } from '@mui/material'
 import {useState} from 'react'
 import  Button  from '@mui/material/Button'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { createFood, loadFood } from '../actions/foodAction'
+import { useDispatch } from 'react-redux'
 
 
-const CreateFood = ({id}) => {
+const CreateFood = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [foodName,setfoodName] = useState('');
     const [price,setPrice] = useState('');
 
-    console.log(id);
+    const {id} = useParams();
     
     function goBack(){
         navigate(`/dashboard/`+id);
     }
     function create(){
-        console.log(foodName);
+        
+        dispatch(createFood({id,foodName,price}))
+        
+        dispatch(loadFood(id))
+
+        goBack();
     }
     function changeText(e){
         setfoodName(e.target.value);

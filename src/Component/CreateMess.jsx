@@ -2,16 +2,22 @@ import { Card, TextField, Typography } from '@mui/material'
 import {useState} from 'react'
 import  Button  from '@mui/material/Button'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { createMess, loadMess } from '../actions/messAction'
 
 const CreateMess = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [messName,setmessName] = useState('');
 
     function goBack(){
         navigate('/dashboard/mess')
     }
     function create(){
-        console.log(messName);
+        dispatch(createMess(messName));
+        dispatch(loadMess());
+        goBack();
+
     }
     function changeText(e){
         setmessName(e.target.value);
