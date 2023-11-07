@@ -5,13 +5,16 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadUser, loginUser } from '../actions/userAction';
+import { useEffect } from 'react';
 
 function Copyright(props) {
   return (
@@ -31,15 +34,25 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {isAuthenticated,isLoading} = useSelector(store=>store.user);
+
+  
+  useEffect(()=>{
+    if(isAuthenticated){
+      navigate('/dashboard/mess')
+    }
+  },[isAuthenticated])
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    
-
-    // SetUser(user.push({}))
+    console.log(data.get('rollNo'));
+    dispatch(loginUser(data.get('rollNo'),data.get('password')));
   };
 
-  return (
+  return isLoading?<>Loading</>: (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -63,9 +76,9 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              label="Roll No"
+              name="rollNo"
+              autoComplete="rollNo"
               autoFocus
             />
             <TextField
